@@ -13,12 +13,14 @@
               <label for="desc" class="form-label">Todo Description</label>
               <input type="text" class="form-control" name="desc" id="desc">
             </div>
+            <button type="submit" class="btn btn-dark">Submit</button>
+          </form>
+          <form action="/uploader" method="post" enctype="multipart/form-data">
             <div class="mb-3">
               <label for="Img" class = "mb-3">Add Image </label>
-              <input type="file" accept="image/png, image/gif, image/jpeg" class="form-control-file" id="Img">
+              <input type="file" accept="image/png, image/gif, image/jpeg" class="form-control-file" id="Img" name="file1">
+              <button type="submit" class="btn btn-dark">Submit Image</button>
             </div>
-            
-            <button type="submit" class="btn btn-dark">Submit</button>
           </form>
     </div>
     
