@@ -2,8 +2,8 @@ from codecs import StreamReaderWriter
 from flask import Flask, render_template, request, redirect,session
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-from werkzeug import secure_filename
-from flask_mail import Mail
+# from werkzeug import secure_filename
+# from flask_mail import Mail
 import json
 import os
 import math
@@ -11,24 +11,24 @@ import math
 with open('config.json', 'r') as c:
     params = json.load(c)["params"]
 
-local_server = True
-app = Flask(__name__)
-app.secret_key = 'super-secret-key'
-# app.config['UPLOAD_FOLDER'] = params['upload_location']
-app.config.update(
-    MAIL_SERVER = 'smtp.gmail.com',
-    MAIL_PORT = '465',
-    MAIL_USE_SSL = True,
-    MAIL_USERNAME = params['gmail-user'],
-    MAIL_PASSWORD=  params['gmail-password']
-)
-mail = Mail(app)
-if(local_server):
-    app.config['SQLALCHEMY_DATABASE_URI'] = params['local_uri']
-else:
-    app.config['SQLALCHEMY_DATABASE_URI'] = params['prod_uri']
+# local_server = True
+# app = Flask(__name__)
+# app.secret_key = 'super-secret-key'
+# # app.config['UPLOAD_FOLDER'] = params['upload_location']
+# app.config.update(
+#     MAIL_SERVER = 'smtp.gmail.com',
+#     MAIL_PORT = '465',
+#     MAIL_USE_SSL = True,
+#     MAIL_USERNAME = params['gmail-user'],
+#     MAIL_PASSWORD=  params['gmail-password']
+# )
+# mail = Mail(app)
+# if(local_server):
+#     app.config['SQLALCHEMY_DATABASE_URI'] = params['local_uri']
+# else:
+#     app.config['SQLALCHEMY_DATABASE_URI'] = params['prod_uri']
 
-db = SQLAlchemy(app)
+# db = SQLAlchemy(app)
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///todo.db"
@@ -49,7 +49,7 @@ def uploader():
     if (request.method =='POST'):
         f= request.files['file1']
         upload_location=params['upload_location']
-        f.save(os.path.join(upload_location, secure_filename(f.filename) ))
+        f.save(os.path.join(upload_location,f.filename ))
         return "Uploaded successfully"
 
 @app.route('/analysis', methods=['GET', 'POST'])
