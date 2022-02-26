@@ -16,7 +16,7 @@
     "login_image":"login.svg",
     "admin_user":"harry",
     "admin_password": "subscribenow",
-    "upload_location":"/home/parth/Desktop/Metal_Detection/static"
+    "upload_location":"./static"
 
 
   }
